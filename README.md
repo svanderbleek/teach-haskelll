@@ -52,3 +52,7 @@ isLeapYear =
 * [Intero](https://commercialhaskell.github.io/intero/) is another friend
 * [Spacemacs](http://spacemacs.org/) may be your best friend
 * [Doctest](https://github.com/sol/doctest#readme) bonus
+
+## Todo
+
+- [ ] exercise for next lunch: http://exercism.io/exercises/haskell/etl/readme
