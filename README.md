@@ -47,6 +47,36 @@ isLeapYear =
     isDivisibleBy400 = (==0) . flip mod 400
 ```
 
+Etl:
+
+```haskell
+module ETL (transform) where
+
+import Data.Map
+  (Map
+  ,singleton
+  ,foldMapWithKey)
+
+import Data.Char
+  (toLower)
+
+transform :: Map a String -> Map Char a
+transform =
+  foldMapWithKey invertMap
+  where
+    invertMap k = foldMap (flip singleton k . toLower)
+```
+
+Discussion:
+
+* Hoogled for `Map k [v] -> Map v k` and found nothing
+* Saw `Map` has `Monoid` instance `Ord k => Monoid (Map k v)`
+* `Char` has `Ord` instance so the inverse `Map` has `Monoid`
+* Idea is to take `singleton :: k -> v -> Map k v` and form maps for each `v` in `[v]` combining them with `mconcat`
+* Use `foldMap :: Monoid m => (a -> m) -> [a] -> m` to do this over `[v]`
+* `Map` provides perfect function to combine all inverted maps `foldMapWithKey :: Monoid m => (k -> a -> m) -> Map k a -> m`
+* ie `(k -> [v] -> Map v k) -> Map k [v] -> Map v k`
+
 ## Pro-tips
 * [Hoogle](https://www.haskell.org/hoogle/) is your friend
 * [Intero](https://commercialhaskell.github.io/intero/) is another friend
