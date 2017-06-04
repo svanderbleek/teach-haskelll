@@ -78,7 +78,7 @@ Discussion:
 * ie `(k -> [v] -> Map v k) -> Map k [v] -> Map v k`
 
 ## Pro-tips
-* [Hoogle](https://www.haskell.org/hoogle/) is your friend
+* [Hoogle](https://www.stackage.org/lts/hoogle) is your friend, and it's better on stackage
 * [Intero](https://commercialhaskell.github.io/intero/) is another friend
 * [Spacemacs](http://spacemacs.org/) may be your best friend
 * [Doctest](https://github.com/sol/doctest#readme) bonus
